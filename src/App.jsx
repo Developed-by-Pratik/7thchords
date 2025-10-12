@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App h-[100vh] scroll-smooth">
+    <div className="App h-[100vh] min-w-[375px]">
       <Navbar />
       <Hero />
       <About />

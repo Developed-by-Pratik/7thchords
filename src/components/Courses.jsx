@@ -2,8 +2,8 @@ import React from "react";
 
 function Courses() {
   const courses = [
-    { title: "Piano", description: "Learn from basics to advanced melodies with hands-on practice." },
     { title: "Guitar", description: "Master chords, strumming, and performance techniques." },
+    { title: "Keyboard", description: "Learn from basics to advanced melodies with hands-on practice." },
     { title: "Vocal", description: "Develop your voice and learn professional singing techniques." },
   ];
 
