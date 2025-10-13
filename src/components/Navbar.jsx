@@ -5,12 +5,14 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full min-w-[375px] fixed">
-      <nav className="flex items-center justify-between bg-black/90 backdrop-blur-sm px-8 py-4 sticky">
+    <>
+      {/* Fixed Navbar */}
+      <nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-black/90 backdrop-blur-sm px-8 py-4 z-50 shadow-md">
         <div className="flex items-center gap-3">
-          <img src={logoImage} alt="Logo" className="h-12 w-full" />
+          <img src={logoImage} alt="Logo" className="h-12 w-auto" />
         </div>
 
+        {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-6">
           <li>
             <a
@@ -38,13 +40,15 @@ function Navbar() {
           </li>
         </ul>
 
+        {/* Mobile Hamburger */}
         <button
           className="md:hidden flex flex-col justify-center items-center space-y-1.5 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           <span
-            className={`block w-6 h-0.5 bg-white transform transition-transform duration-200 
-              ${isOpen ? "rotate-45 translate-y-1.5" : ""}`}
+            className={`block w-6 h-0.5 bg-white transform transition-transform duration-200 ${
+              isOpen ? "rotate-45 translate-y-1.5" : ""
+            }`}
           />
           <span
             className={`block w-6 h-0.5 bg-white transition-opacity duration-200 ${
@@ -61,7 +65,7 @@ function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-[72px] left-0 w-full bg-black border-t border-white/10 shadow-lg md:hidden animate-slideDown">
+        <div className="fixed top-[72px] left-0 w-full bg-black border-t border-white/10 shadow-lg md:hidden animate-slideDown z-40">
           <ul className="flex flex-col items-center gap-4 py-4">
             <li>
               <a
@@ -93,7 +97,10 @@ function Navbar() {
           </ul>
         </div>
       )}
-    </div>
+
+      {/* Spacer to prevent content from hiding behind fixed navbar */}
+      <div className="pt-[72px]" />
+    </>
   );
 }
 

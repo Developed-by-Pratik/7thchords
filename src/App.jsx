@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Carousel from "./components/Carousel";
 import About from "./components/About";
 import Courses from "./components/Courses";
 import Contact from "./components/Contact";
@@ -7,14 +7,14 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App h-[100vh] min-w-[375px]">
+    <div className="App h-[100vh] min-w-[375px] bg-black">
       <Navbar />
-      <Hero />
+      <Carousel />
       <About />
       <Courses />
       <Contact />
       <Footer />
-    </div>  
+    </div>
   );
 }
 
