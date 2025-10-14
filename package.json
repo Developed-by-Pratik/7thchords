@@ -1,6 +1,6 @@
 {
   "homepage": "https://www.7thchordsacademy.online",
-  "name": "7thchords-frontend",
+  "name": "7thchords",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,13 +9,16 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && echo 7thchordsacademy.online > dist/CNAME",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.545.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-leaflet": "^5.0.0",
     "swiper": "^12.0.2"
   },
   "devDependencies": {

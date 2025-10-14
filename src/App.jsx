@@ -1,18 +1,23 @@
 import Navbar from "./components/Navbar";
-import Carousel from "./components/Carousel";
+import Main from "./components/Main";
 import About from "./components/About";
 import Courses from "./components/Courses";
-import Contact from "./components/Contact";
+import Learning from "./components/Learning";
+import Carousel from "./components/Carousel";
+import Registration from "./components/Registration";
 import Footer from "./components/Footer";
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   return (
     <div className="App h-[100vh] min-w-[375px] bg-black">
       <Navbar />
-      <Carousel />
+      <Main />
       <About />
       <Courses />
-      <Contact />
+      <Learning />
+      <Carousel />
+      {/* <Registration /> */}
       <Footer />
     </div>
   );

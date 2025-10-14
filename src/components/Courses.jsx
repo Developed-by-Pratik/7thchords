@@ -1,21 +1,112 @@
 import React from "react";
+import {
+  Music,
+  Guitar,
+  Piano,
+  Drum,
+  Wind,
+  Hand,
+  Drama,
+  MicVocal,
+  Video,
+  AudioLines,
+  UserCog,
+  Sparkles,
+  Zap,
+  Heart,
+  Star,
+  CircleDot,
+  Flame,
+} from "lucide-react";
 
-function Courses() {
-  const courses = [
-    { title: "Guitar", description: "Master chords, strumming, and performance techniques." },
-    { title: "Keyboard", description: "Learn from basics to advanced melodies with hands-on practice." },
-    { title: "Vocal", description: "Develop your voice and learn professional singing techniques." },
-  ];
+const coursesData = [
+  {
+    MainIcon: Music,
+    title: "Music",
+    items: [
+      { Icon: Guitar, text: "Guitar (Primary Focus)" },
+      { Icon: Piano, text: "Keyboard/Piano" },
+      { Icon: Drum, text: "Drums" },
+      { Icon: Wind, text: "Flute" },
+      { Icon: Hand, text: "Tabla, Harmonium" },
+    ],
+  },
+  {
+    MainIcon: Drama,
+    title: "Acting",
+    items: [
+      { Icon: MicVocal, text: "Stage Performance" },
+      { Icon: Video, text: "Screen Acting" },
+      { Icon: AudioLines, text: "Voice Modulation" },
+      { Icon: UserCog, text: "Character Development" },
+      { Icon: Sparkles, text: "Improvisation" },
+    ],
+  },
+  {
+    MainIcon: Flame,
+    title: "Dance",
+    items: [
+      { Icon: Music, text: "Classical Dance" },
+      { Icon: CircleDot, text: "Contemporary" },
+      { Icon: Zap, text: "Hip Hop" },
+      { Icon: Heart, text: "Bollywood" },
+      { Icon: Star, text: "Folk Dance" },
+    ],
+  },
+];
+
+const CourseCard = ({ MainIcon, title, items }) => {
+  const handleClick = () => {
+    const phoneNumber = "917775077248";
+    const message = `Hello, I want to join the ${title} course!\nName : \nCity : `;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
+    <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center hover:shadow-xl transition-all duration-300 scale-[1.02] hover:-translate-y-[2px]">
+      <div className="bg-yellow-100 rounded-full p-4 mb-4">
+        <MainIcon className="h-8 w-8 text-yellow-600" strokeWidth={2} />
+      </div>
+      <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-gray-800">
+        {title}
+      </h3>
+      <ul className="text-left w-full space-y-3 mb-8 text-gray-600">
+        {items.map((item, index) => (
+          <li key={index} className="flex items-center gap-3">
+            <item.Icon className="h-5 w-5 text-yellow-500" strokeWidth={2.5} />
+            <span>{item.text}</span>
+          </li>
+        ))}
+      </ul>
+      <button
+        onClick={handleClick}
+        className="mt-auto bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg w-full hover:bg-yellow-500 transition-colors duration-300"
+      >
+        Enroll Now
+      </button>
+    </div>
+  );
+};
+
+function Courses() {
+  return (
     <section id="courses" className="py-20 px-6 bg-gray-50 text-center">
-      <h2 className="text-3xl font-bold mb-10">Our Courses</h2>
-      <div className="flex flex-wrap justify-center gap-8">
-        {courses.map((course, idx) => (
-          <div key={idx} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow w-72">
-            <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
-            <p className="text-gray-600">{course.description}</p>
-          </div>
+      <h2 className="text-4xl font-extrabold mb-4 text-gray-800">
+        Courses Offered
+      </h2>
+      <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+        Explore our comprehensive range of artistic programs
+      </p>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {coursesData.map((course, index) => (
+          <CourseCard
+            key={index}
+            MainIcon={course.MainIcon}
+            title={course.title}
+            items={course.items}
+          />
         ))}
       </div>
     </section>

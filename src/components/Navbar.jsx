@@ -1,19 +1,30 @@
 import React, { useState } from "react";
+import { Instagram } from "lucide-react";
 import logoImage from "../assets/main_logo.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const phoneNumber = "917775077248";
+  const message = "Hi, I would like to enquire about courses and batches. \nName : \nCity : \nCourse : ";
+
+  const handleClick = () => {
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <>
       {/* Fixed Navbar */}
-      <nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-black/90 backdrop-blur-sm px-8 py-4 z-50 shadow-md">
+      <nav className="fixed top-0 left-0 w-full flex items-center justify-between bg-black/80 backdrop-blur-sm px-8 py-4 z-50 shadow-md">
+        {/* Logo */}
         <div className="flex items-center gap-3">
           <img src={logoImage} alt="Logo" className="h-12 w-auto" />
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden md:flex items-center gap-4 lg:gap-12">
           <li>
             <a
               href="#about"
@@ -32,10 +43,18 @@ function Navbar() {
           </li>
           <li>
             <a
+              href="#instructors"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Instructors
+            </a>
+          </li>
+          <li>
+            <a
               href="#contact"
               className="text-white hover:text-gray-300 transition-colors"
             >
-              Contact Us
+              Contact
             </a>
           </li>
         </ul>
@@ -61,6 +80,25 @@ function Navbar() {
             }`}
           />
         </button>
+
+        {/* Interactive Buttons */}
+        <div className="hidden md:flex items-center justify-center gap-4">
+          <button className="text-white hover:text-gray-300 transition-colors">
+            <a
+              href="https://www.instagram.com/7th_chords_music_academy/#"
+              target="_blank"
+            >
+              <Instagram />
+            </a>
+          </button>
+          <button onClick={handleClick}
+            className="px-6 py-2 rounded-full text-white 
+        backdrop-blur-xl bg-white/10 border border-white/30 hover:bg-white/20 
+        hover:scale-101 transition-all duration-500 ease-in-out"
+          >
+            Enquire Now
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Dropdown Menu */}
@@ -83,6 +121,15 @@ function Navbar() {
                 className="text-white hover:text-gray-300"
               >
                 Courses
+              </a>
+            </li>
+            <li>
+              <a
+                href="#instructors"
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:text-gray-300"
+              >
+                Instructors
               </a>
             </li>
             <li>

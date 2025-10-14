@@ -37,7 +37,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full min-w-[375px] h-auto py-16 bg-black">
+    <div className="relative w-full min-w-[375px] h-auto py-16 bg-gray-50">
       <style>{`
         swiper-container {
           width: 100%;

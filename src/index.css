@@ -14,6 +14,21 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeSlide {
+  animation: fadeSlide 0.8s ease-out forwards;
+}
+
 .animate-slideDown {
   animation: slideDown 0.2s ease-out;
 }
