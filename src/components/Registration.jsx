@@ -1,31 +1,39 @@
-import React, { useState } from 'react';
-import { Phone, MapPin, Instagram, Mail, User, BookOpen, MessageCircleHeart } from 'lucide-react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet'; // Import L to fix a known issue with the default icon
+import React, { useState } from "react";
+import {
+  Phone,
+  MapPin,
+  Instagram,
+  Mail,
+  User,
+  BookOpen,
+  MessageCircleHeart,
+} from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
-// Fix for default marker icon issue with webpack
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
 });
-
 
 const Registration = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    contactNumber: '',
-    course: '',
+    fullName: "",
+    email: "",
+    contactNumber: "",
+    course: "",
   });
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const locations = {
-    pune: [18.5204, 73.8567],
-    sambhajinagar: [19.8762, 75.3433],
+    pune: [18.463797067048343, 73.83480893682008],
+    sambhajinagar: [19.907761574241793, 75.35463482336795],
   };
-
-  const mapCenter = [19.2, 74.6]; // A central point between the two cities
+  const mapCenter = [19.2, 74.6];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,16 +43,38 @@ const Registration = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Registration Form Data:', formData);
-    alert('Registration form submitted! (Check console for data)');
-    setFormData({
-      fullName: '',
-      email: '',
-      contactNumber: '',
-      course: '',
-    });
+    setIsSubmitted(true);
+
+    try {
+      const response = await fetch(
+        "https://seventhchordsapi.onrender.com/send-whatsapp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      console.log("Registration details sent to server successfully.");
+
+      setFormData({
+        fullName: "",
+        email: "",
+        contactNumber: "",
+        course: "",
+      });
+    } catch (error) {
+      console.error("Failed to send registration details:", error);
+      setIsSubmitted(false);
+      alert("Failed to submit registration. Please try again.");
+    }
   };
 
   return (
@@ -61,15 +91,23 @@ const Registration = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 bg-white shadow-xl rounded-lg p-8 sm:p-12">
         {/* Registration Form Section */}
         <div className="bg-white p-6 rounded-lg">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Registration Form</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            Registration Form
+          </h3>
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Form fields remain the same */}
-             <div>
-              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+            {/* Full Name */}
+            <div>
+              <label
+                htmlFor="fullName"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <User
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={20}
+                />
                 <input
                   type="text"
                   id="fullName"
@@ -83,12 +121,19 @@ const Registration = () => {
               </div>
             </div>
 
+            {/* Email Address */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <Mail
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={20}
+                />
                 <input
                   type="email"
                   id="email"
@@ -102,12 +147,19 @@ const Registration = () => {
               </div>
             </div>
 
+            {/* Contact Number */}
             <div>
-              <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="contactNumber"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Contact Number
               </label>
               <div className="relative">
-                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <Phone
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={20}
+                />
                 <input
                   type="tel"
                   id="contactNumber"
@@ -121,12 +173,19 @@ const Registration = () => {
               </div>
             </div>
 
+            {/* Course of Interest */}
             <div>
-              <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="course"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Course of Interest
               </label>
               <div className="relative">
-                <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                <BookOpen
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={20}
+                />
                 <select
                   id="course"
                   name="course"
@@ -136,11 +195,12 @@ const Registration = () => {
                   required
                 >
                   <option value="">Select a course</option>
-                  <option value="Guitar Basics">Guitar Basics</option>
-                  <option value="Piano Essentials">Piano Essentials</option>
-                  <option value="Vocal Training">Vocal Training</option>
-                  <option value="Drumming Fundamentals">Drumming Fundamentals</option>
-                  <option value="Music Production">Music Production</option>
+                  <option value="Guitar">Guitar</option>
+                  <option value="Keyboard">Keyboard</option>
+                  <option value="Drum">Drum</option>
+                  <option value="Singing">Singing</option>
+                  <option value="Acting">Acting</option>
+                  <option value="Dance">Dance</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
@@ -156,28 +216,43 @@ const Registration = () => {
 
             <button
               type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-gray-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300"
+              disabled={isSubmitted}
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-gray-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 disabled:bg-green-500 disabled:text-white disabled:cursor-not-allowed"
             >
-              Register Now
+              {isSubmitted
+                ? "You will get a call from us shortly!"
+                : "Register Now"}
             </button>
           </form>
         </div>
 
-        {/* Get In Touch Section */}
+        {/* Get In Touch Section (No changes here) */}
         <div className="bg-white p-6 rounded-lg md:border-l md:border-gray-200">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Get In Touch</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            Get In Touch
+          </h3>
           <div className="space-y-6">
-            {/* Contact Info remains the same */}
             <div className="flex items-start">
-              <Phone className="text-yellow-500 mr-3 mt-1 flex-shrink-0" size={24} />
+              <Phone
+                className="text-yellow-500 mr-3 mt-1 flex-shrink-0"
+                size={24}
+              />
               <div>
-                <p className="text-lg font-semibold text-gray-800">Phone Numbers</p>
+                <p className="text-lg font-semibold text-gray-800">
+                  Phone Numbers
+                </p>
                 <p className="text-gray-600">
-                  <a href="tel:+917775077248" className="hover:text-yellow-600 transition-colors duration-300 mr-2">
+                  <a
+                    href="tel:+917775077248"
+                    className="hover:text-yellow-600 transition-colors duration-300 mr-2"
+                  >
                     7775077248
                   </a>
                   /
-                  <a href="tel:+919595619414" className="hover:text-yellow-600 transition-colors duration-300 ml-2">
+                  <a
+                    href="tel:+919595619414"
+                    className="hover:text-yellow-600 transition-colors duration-300 ml-2"
+                  >
                     9595619414
                   </a>
                 </p>
@@ -185,15 +260,23 @@ const Registration = () => {
             </div>
 
             <div className="flex items-start">
-              <MapPin className="text-yellow-500 mr-3 mt-1 flex-shrink-0" size={24} />
+              <MapPin
+                className="text-yellow-500 mr-3 mt-1 flex-shrink-0"
+                size={24}
+              />
               <div>
                 <p className="text-lg font-semibold text-gray-800">Locations</p>
-                <p className="text-gray-600">Pune City & Chh. Sambhajinagar City</p>
+                <p className="text-gray-600">
+                  Pune City & Chh. Sambhajinagar City
+                </p>
               </div>
             </div>
 
             <div className="flex items-start">
-              <Instagram className="text-yellow-500 mr-3 mt-1 flex-shrink-0" size={24} />
+              <Instagram
+                className="text-yellow-500 mr-3 mt-1 flex-shrink-0"
+                size={24}
+              />
               <div>
                 <p className="text-lg font-semibold text-gray-800">Follow Us</p>
                 <a
@@ -207,7 +290,6 @@ const Registration = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
               <a
                 href="tel:+917775077248"
@@ -225,9 +307,13 @@ const Registration = () => {
               </a>
             </div>
 
-            {/* Interactive Map */}
-            <div className="mt-8 h-64 w-full rounded-lg overflow-hidden shadow-lg">
-              <MapContainer center={mapCenter} zoom={7} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
+            <div className="relative z-0 mt-8 h-64 w-full rounded-lg overflow-hidden shadow-lg">
+              <MapContainer
+                center={mapCenter}
+                zoom={7}
+                scrollWheelZoom={false}
+                style={{ height: "100%", width: "100%" }}
+              >
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

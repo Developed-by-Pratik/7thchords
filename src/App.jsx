@@ -17,7 +17,7 @@ function App() {
       <Courses />
       <Learning />
       <Carousel />
-      {/* <Registration /> */}
+      <Registration />
       <Footer />
     </div>
   );
