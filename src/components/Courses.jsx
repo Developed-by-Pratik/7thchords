@@ -57,7 +57,7 @@ const coursesData = [
 
 const CourseCard = ({ MainIcon, title, items }) => {
   const handleClick = () => {
-    const phoneNumber = "917775077248";
+    const phoneNumber = "919595618414";
     const message = `Hello, I want to join the ${title} course!\nName : \nCity : `;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;

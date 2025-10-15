@@ -5,7 +5,7 @@ import logoImage from "../assets/main_logo.png";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const phoneNumber = "917775077248";
+  const phoneNumber = "919595618414";
   const message = "Hi, I would like to enquire about courses and batches. \nName : \nCity : \nCourse : ";
 
   const handleClick = () => {

@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Data for the "Genres Covered" section
 const genres = [
   {
     icon: 'ॐ',
@@ -22,7 +21,6 @@ const genres = [
   },
 ];
 
-// Data for the "Learning Modes" section
 const learningModes = [
   {
     icon: '🏢',
@@ -44,7 +42,6 @@ const learningModes = [
   },
 ];
 
-// A reusable Card component - it has no fixed width so it can be flexible.
 const InfoCard = ({ icon, title, description, iconColor }) => {
   return (
     <div className="bg-slate-800 p-6 rounded-lg hover:bg-slate-700 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-[2px]">

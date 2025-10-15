@@ -61,27 +61,34 @@ function Footer() {
         {/* Copyright and Contact Info */}
         <div className="text-gray-400 text-sm flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4">
           <p>
-            © 2024 7th Chords Music & SkilLearn Academy. All rights reserved.
+            © 2018 7th Chords Music & SkilLearn Academy. All rights reserved.
           </p>
           <div className="flex items-center">
             <span className="hidden sm:inline mx-2">|</span>
-            <p className="flex items-center flex-wrap justify-center">
-              Pune City & Chh. Sambhajinagar:
-              <MapPin className="text-red-500 mx-1.5" size={16} />
-              <a
-                href="tel:+917775077248"
-                className="hover:text-white transition-colors duration-300"
-              >
-                7775077248
-              </a>
-              <span className="mx-1">|</span>
-              <a
-                href="tel:+919595619414"
-                className="hover:text-white transition-colors duration-300"
-              >
-                9595619414
-              </a>
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-1">
+              {/* This part contains the city names and map pin */}
+              <div className="flex items-center justify-center">
+                <span>Pune City & Chh. Sambhajinagar:</span>
+              </div>
+
+              {/* This part contains the phone numbers */}
+              <div className="mt-1 sm:mt-0 flex items-center justify-center">
+                <MapPin className="text-red-500 mx-1.5" size={16} />
+                <a
+                  href="tel:+917775077248"
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  7775077248
+                </a>
+                <span className="mx-1">|</span>
+                <a
+                  href="tel:+919595619414"
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  9595619414
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

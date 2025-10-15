@@ -72,17 +72,21 @@ const Registration = () => {
       return;
     }
 
-    const phoneNumber = "917775077248";
+    const phoneNumber = "919595618414";
     const message = `
-Hello 7th Chords Academy!
+Hello 7th Chords Academy! 🎶
 
-I would like to register for a course. Here are my details:
-- *Name:* ${formData.fullName}
-- *Email:* ${formData.email}
-- *Contact:* ${formData.contactNumber}
-- *Course:* ${formData.course}
+I'm ready to start my musical journey and would love to register for a course! 🎸✨
+Here are my details:
 
-Please get in touch with me. Thank you!
+Name: ${formData.fullName}
+Email: ${formData.email}
+Contact: ${formData.contactNumber}
+Course: ${formData.course}
+
+I can't wait to connect and learn more. Please get in touch soon!
+
+Thank you! 😊
     `.trim();
 
     const encodedMessage = encodeURIComponent(message);
@@ -231,7 +235,7 @@ Please get in touch with me. Thank you!
                   <option value="">Select a course</option>
                   <option value="Guitar">Guitar</option>
                   <option value="Keyboard">Keyboard</option>
-                  <option value="Drum">Drum</option>
+                  <option value="Drumset">Drumset</option>
                   <option value="Singing">Singing</option>
                   <option value="Acting">Acting</option>
                   <option value="Dance">Dance</option>
@@ -337,7 +341,7 @@ Please get in touch with me. Thank you!
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/917775077248?text=Hello%2C%20I%20want%20to%20know%20more%20about%207th%20Chords%20Academy%20%21"
+                href="https://wa.me/919595618414?text=Hello%2C%20I%20want%20to%20know%20more%20about%207th%20Chords%20Academy%20%21"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300"

@@ -5,7 +5,7 @@ import { Guitar, Phone, GraduationCap, Music4, Star } from "lucide-react";
 
 function Main() {
 
-  const phoneNumber = "917775077248";
+  const phoneNumber = "919595618414";
   const message =
     "Hello, I want to join the course !\n Name :\n City : \n Course : ";
 
