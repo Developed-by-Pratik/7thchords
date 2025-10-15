@@ -28,7 +28,9 @@ const Registration = () => {
     course: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+
   const locations = {
     pune: [18.463797067048343, 73.83480893682008],
     sambhajinagar: [19.907761574241793, 75.35463482336795],
@@ -41,40 +43,60 @@ const Registration = () => {
       ...prevData,
       [name]: value,
     }));
+    if (errors[name]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: null,
+      }));
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    const validationErrors = {};
 
-    try {
-      const response = await fetch(
-        "https://seventhchordsapi.onrender.com/send-whatsapp",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      console.log("Registration details sent to server successfully.");
-
-      setFormData({
-        fullName: "",
-        email: "",
-        contactNumber: "",
-        course: "",
-      });
-    } catch (error) {
-      console.error("Failed to send registration details:", error);
-      setIsSubmitted(false);
-      alert("Failed to submit registration. Please try again.");
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!formData.email || !emailRegex.test(formData.email)) {
+      validationErrors.email = "Please enter a valid Gmail address.";
     }
+
+    const mobileRegex = /^\d{10}$/;
+    if (!formData.contactNumber || !mobileRegex.test(formData.contactNumber)) {
+      validationErrors.contactNumber =
+        "Please enter a valid 10-digit mobile number.";
+    }
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
+
+    const phoneNumber = "917775077248";
+    const message = `
+Hello 7th Chords Academy!
+
+I would like to register for a course. Here are my details:
+- *Name:* ${formData.fullName}
+- *Email:* ${formData.email}
+- *Contact:* ${formData.contactNumber}
+- *Course:* ${formData.course}
+
+Please get in touch with me. Thank you!
+    `.trim();
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
+
+    setIsSubmitted(true);
+    setFormData({
+      fullName: "",
+      email: "",
+      contactNumber: "",
+      course: "",
+    });
   };
 
   return (
@@ -140,11 +162,16 @@ const Registration = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Enter your email"
-                  className="pl-10 pr-4 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
+                  placeholder="Enter yourname@gmail.com"
+                  className={`pl-10 pr-4 py-2 block w-full border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm ${
+                    errors.email ? "border-red-500" : "border-gray-300"
+                  }`}
                   required
                 />
               </div>
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+              )}
             </div>
 
             {/* Contact Number */}
@@ -166,11 +193,18 @@ const Registration = () => {
                   name="contactNumber"
                   value={formData.contactNumber}
                   onChange={handleChange}
-                  placeholder="Enter your phone number"
-                  className="pl-10 pr-4 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
+                  placeholder="Enter your 10-digit number"
+                  className={`pl-10 pr-4 py-2 block w-full border rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm ${
+                    errors.contactNumber ? "border-red-500" : "border-gray-300"
+                  }`}
                   required
                 />
               </div>
+              {errors.contactNumber && (
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.contactNumber}
+                </p>
+              )}
             </div>
 
             {/* Course of Interest */}
@@ -219,19 +253,18 @@ const Registration = () => {
               disabled={isSubmitted}
               className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-gray-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 disabled:bg-green-500 disabled:text-white disabled:cursor-not-allowed"
             >
-              {isSubmitted
-                ? "You will get a call from us shortly!"
-                : "Register Now"}
+              {isSubmitted ? "Redirecting to WhatsApp..." : "Register Now"}
             </button>
           </form>
         </div>
 
-        {/* Get In Touch Section (No changes here) */}
+        {/* --- MODIFIED: Get In Touch Section with Tooltip --- */}
         <div className="bg-white p-6 rounded-lg md:border-l md:border-gray-200">
           <h3 className="text-2xl font-bold text-gray-800 mb-6">
             Get In Touch
           </h3>
           <div className="space-y-6">
+            {/* Contact Details (no changes) */}
             <div className="flex items-start">
               <Phone
                 className="text-yellow-500 mr-3 mt-1 flex-shrink-0"
@@ -258,7 +291,6 @@ const Registration = () => {
                 </p>
               </div>
             </div>
-
             <div className="flex items-start">
               <MapPin
                 className="text-yellow-500 mr-3 mt-1 flex-shrink-0"
@@ -271,7 +303,6 @@ const Registration = () => {
                 </p>
               </div>
             </div>
-
             <div className="flex items-start">
               <Instagram
                 className="text-yellow-500 mr-3 mt-1 flex-shrink-0"
@@ -290,13 +321,21 @@ const Registration = () => {
               </div>
             </div>
 
+            {/* --- MODIFIED: Action Buttons with Tooltip --- */}
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+              {/* Call Now Button with Tooltip */}
               <a
                 href="tel:+917775077248"
-                className="flex-1 flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300"
+                className="relative group flex-1 flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-gray-900 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300"
               >
                 <Phone className="mr-2" size={20} /> Call Now
+                {/* TOOLTIP: visible on lg screens and up on hover */}
+                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max whitespace-nowrap bg-gray-700 text-white text-xs font-semibold rounded-md px-3 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden lg:block">
+                  Call: +91 7775077248
+                </span>
               </a>
+
+              {/* WhatsApp Button */}
               <a
                 href="https://wa.me/917775077248?text=Hello%2C%20I%20want%20to%20know%20more%20about%207th%20Chords%20Academy%20%21"
                 target="_blank"
