@@ -9,7 +9,7 @@ function Instructors() {
   const instructors = [
     {
       id: 1,
-      name: 'Aniket Gadekar',
+      name: 'Aniket D. Gadekar',
       specialty: 'Founder & Guitar Specialist',
       description: 'With over 15 years of mastery, Aniket teaches Western, Classical, and Contemporary guitar to students of all skill levels.',
       image: Aniket, 
@@ -57,14 +57,10 @@ function Instructors() {
         </div>
 
         {/* --- Responsive Instructors Container --- */}
-        {/* Default: Horizontal scroll with flexbox */}
-        {/* lg (large screens): Switches to a 5-column grid */}
         <div className="flex overflow-x-auto space-x-6 pb-4 lg:grid lg:grid-cols-5 lg:gap-8 lg:space-x-0">
           {instructors.map((instructor) => (
             <div 
               key={instructor.id} 
-              // Default: Fixed width for scrolling
-              // lg: Auto width to fit the grid column
               className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center w-64 flex-shrink-0 lg:w-auto"
             >
               {/* Instructor Image */}
