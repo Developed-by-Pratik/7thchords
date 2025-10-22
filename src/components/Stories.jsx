@@ -7,19 +7,19 @@ import Rohit from "../assets/avators/RG.png";
 const testimonials = [
   {
     quote: `🎸 I've joined here for Guitar lessons and it's been a fantastic journey. 😊 I'm very happy with the training and the progress I've made. 👨‍🏫 The teachers are really good, patient, and always encourage us to improve. ⭐ Highly recommend joining, especially for Guitar, if you want to learn from passionate instructors and be part of a supportive community.`,
-    avatar: AD,
+    avatar: Amit,
     name: "Amit Desai",
     role: "Guitar Student",
   },
   {
     quote: `🏆 Best coaching with a personal teaching method that adapts to each student's needs. 🎤 Live performance shows and open singing events for students help build confidence and stage presence. 🎹 Best guitar and piano classes with friendly teachers who make learning fun and engaging. I truly enjoy every session and have learned so much.`,
-    avatar: SJ,
+    avatar: Sneha,
     name: "Sneha Joshi",
     role: "Dance Student",
   },
   {
     quote: `🌟 It's an absolutely amazing experience to learn here. 🖐️ The finger exercises are really simple and effective, making practice enjoyable for my child. 😊 I would recommend it to any parent looking for quality music education. The staff is caring, and the environment is welcoming, which makes a big difference in my child's enthusiasm for learning.`,
-    avatar: RG,
+    avatar: Rohit,
     name: "Rohit Gupta",
     role: "Parent",
   },
