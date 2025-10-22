@@ -121,7 +121,7 @@ const Carousel = () => {
       >
         {images.map((src, index) => (
           <swiper-slide key={index} class="shadow-lg">
-            <img src={src} alt={`Slide ${index + 1}`} />
+            <img src={src} alt="A photo from the 7th Chords Music Academy gallery" />
           </swiper-slide>
         ))}
       </swiper-container>
