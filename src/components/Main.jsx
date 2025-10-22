@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import logoImage from "../assets/small_logo.png";
 import BgImage from "../assets/club_playing_small.jpg";
 import { Guitar, Phone, GraduationCap, Music4, Star } from "lucide-react";
 
@@ -27,7 +26,7 @@ function Main() {
       <div className="relative z-10 max-w-2xl space-y-5 text-center md:text-left animate-fadeSlide">
         {/* Logo/Icon + Heading */}
         <div className="flex items-center justify-center md:justify-start gap-1">
-          <img src={logoImage} className="h-[2.6rem]" alt="7th Chords Logo"></img>
+          <img src="/small_logo.png" className="h-[2.6rem]" alt="7th Chords Logo"></img>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide">
             7th{" "}
             <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">

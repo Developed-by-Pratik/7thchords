@@ -1,5 +1,4 @@
 import React from "react";
-import logoImage from "../assets/small_logo.png";
 import { Instagram, Phone, MessageCircleHeart, MapPin } from "lucide-react";
 
 function Footer() {
@@ -8,7 +7,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
         {/* Logo and Academy Name */}
         <div className="flex items-center space-x-3 mb-4">
-          <img src={logoImage} alt="7th Chords Logo" className="h-12 w-12" />
+          <img src="/small_logo.png" alt="7th Chords Logo" className="h-12 w-12" />
           <div>
             <h3 className="text-white text-xl sm:text-2xl font-bold tracking-wider">
               7th CHORDS
