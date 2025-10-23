@@ -7,6 +7,8 @@ import {
   User,
   BookOpen,
   MessageCircleHeart,
+  CakeSlice,
+  ToggleLeft,
 } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
@@ -26,6 +28,8 @@ const Registration = () => {
     email: "",
     contactNumber: "",
     course: "",
+    age: "",
+    mode: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -74,19 +78,21 @@ const Registration = () => {
 
     const phoneNumber = "919595618414";
     const message = `
-Hello 7th Chords Academy! 🎶
+𝐇𝐞𝐥𝐥𝐨 𝟕𝐭𝐡 𝐂𝐇𝐎𝐑𝐃𝐒 𝐀𝐂𝐀𝐃𝐄𝐌𝐘...!!
 
-I'm ready to start my musical journey and would love to register for a course! 🎸✨
-Here are my details:
+ɪ'ᴍ ʀᴇᴀᴅʏ ᴛᴏ sᴛᴀʀᴛ ᴍʏ ᴍᴜsɪᴄᴀʟ ᴊᴏᴜʀɴᴇʏ ᴀɴᴅ ᴡᴏᴜʟᴅ ʟᴏᴠᴇ ᴛᴏ ʀᴇɢɪsᴛᴇʀ ғᴏʀ ᴀ ᴄᴏᴜʀsᴇ..!!
 
-Name: ${formData.fullName}
-Email: ${formData.email}
-Contact: ${formData.contactNumber}
-Course: ${formData.course}
+ʜᴇʀᴇ ᴀʀᴇ ᴍʏ ᴅᴇᴛᴀɪʟs :-
+- 𝐍𝐚𝐦𝐞  :- ${formData.fullName}
+- 𝐀𝐠𝐞    :- ${formData.age}
+- 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 :- ${formData.contactNumber}
+- 𝐄𝐦𝐚𝐢𝐥   :- ${formData.email}
+- 𝐂𝐨𝐮𝐫𝐬𝐞  :- ${formData.course}
+- 𝐌𝐨𝐝𝐞   :- ${formData.mode}
 
-I can't wait to connect and learn more. Please get in touch soon!
+ɪ ᴄᴀɴ'ᴛ ᴡᴀɪᴛ ᴛᴏ ᴄᴏɴɴᴇᴄᴛ ᴀɴᴅ ʟᴇᴀʀɴ ᴍᴏʀᴇ. ᴘʟᴇᴀsᴇ ɢᴇᴛ ɪɴ ᴛᴏᴜᴄʜ sᴏᴏɴ...!!
 
-Thank you! 😊
+ᴛʜᴀɴᴋ ʏᴏᴜ..!!
     `.trim();
 
     const encodedMessage = encodeURIComponent(message);
@@ -100,6 +106,8 @@ Thank you! 😊
       email: "",
       contactNumber: "",
       course: "",
+      age: "",
+      mode: "",
     });
   };
 
@@ -121,7 +129,7 @@ Thank you! 😊
             Registration Form
           </h3>
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Full Name */}
+            {/* Full Name (no change) */}
             <div>
               <label
                 htmlFor="fullName"
@@ -147,7 +155,35 @@ Thank you! 😊
               </div>
             </div>
 
-            {/* Email Address */}
+            {/* --- NEW FIELD: Age --- */}
+            <div>
+              <label
+                htmlFor="age"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Age
+              </label>
+              <div className="relative">
+                <CakeSlice
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={20}
+                />
+                <input
+                  type="number"
+                  id="age"
+                  name="age"
+                  min={1}
+                  max={100}
+                  value={formData.age}
+                  onChange={handleChange}
+                  placeholder="Enter your age"
+                  className="pl-10 pr-4 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Email Address (no change) */}
             <div>
               <label
                 htmlFor="email"
@@ -178,7 +214,7 @@ Thank you! 😊
               )}
             </div>
 
-            {/* Contact Number */}
+            {/* Contact Number (no change) */}
             <div>
               <label
                 htmlFor="contactNumber"
@@ -211,7 +247,7 @@ Thank you! 😊
               )}
             </div>
 
-            {/* Course of Interest */}
+            {/* Course of Interest (no change) */}
             <div>
               <label
                 htmlFor="course"
@@ -252,6 +288,42 @@ Thank you! 😊
               </div>
             </div>
 
+            {/* --- NEW FIELD: Mode --- */}
+            <div>
+              <label
+                htmlFor="mode"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Mode of Learning
+              </label>
+              <div className="relative">
+                <ToggleLeft
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={20}
+                />
+                <select
+                  id="mode"
+                  name="mode"
+                  value={formData.mode}
+                  onChange={handleChange}
+                  className="pl-10 pr-4 py-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm appearance-none"
+                  required
+                >
+                  <option value="">Select a mode</option>
+                  <option value="Online">Online</option>
+                  <option value="Offline">Offline</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
             <button
               type="submit"
               disabled={isSubmitted}
@@ -287,10 +359,10 @@ Thank you! 😊
                   </a>
                   /
                   <a
-                    href="tel:+919595619414"
+                    href="tel:+919595618414"
                     className="hover:text-yellow-600 transition-colors duration-300 ml-2"
                   >
-                    9595619414
+                    9595618414
                   </a>
                 </p>
               </div>
@@ -341,7 +413,7 @@ Thank you! 😊
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/919595618414?text=Hello%2C%20I%20want%20to%20know%20more%20about%207th%20Chords%20Academy%20%21"
+                href="https://q.me-qr.com/WW0Bheb7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-300"

@@ -1,4 +1,6 @@
 import React from "react";
+import Mastery from "../assets/avators/mastery.png";
+import Zumba from "../assets/avators/zumba.png";
 import {
   Music,
   Guitar,
@@ -11,12 +13,14 @@ import {
   Video,
   AudioLines,
   UserCog,
-  Sparkles,
   Zap,
   Heart,
   Star,
   CircleDot,
   Flame,
+  Mic,
+  Clapperboard,
+  FilePlay
 } from "lucide-react";
 
 const coursesData = [
@@ -26,9 +30,10 @@ const coursesData = [
     items: [
       { Icon: Guitar, text: "Guitar (Primary Focus)" },
       { Icon: Piano, text: "Keyboard/Piano" },
-      { Icon: Drum, text: "Drums" },
-      { Icon: Wind, text: "Flute" },
+      { Icon: Mic, text: "Vocals And Singing" },
       { Icon: Hand, text: "Tabla, Harmonium" },
+      { Icon: Drum, text: "Drums" },
+      { Icon: Wind, text: "Flute" }
     ],
   },
   {
@@ -39,18 +44,19 @@ const coursesData = [
       { Icon: Video, text: "Screen Acting" },
       { Icon: AudioLines, text: "Voice Modulation" },
       { Icon: UserCog, text: "Character Development" },
-      { Icon: Sparkles, text: "Improvisation" },
+      { Icon: Clapperboard, text: "Cinematography" },
+      { Icon: FilePlay, text: "Video Editing" },
     ],
   },
   {
     MainIcon: Flame,
     title: "Dance",
     items: [
-      { Icon: Music, text: "Classical Dance" },
+      { Icon: Heart, text: "Bollywood Dance" },
       { Icon: CircleDot, text: "Contemporary" },
       { Icon: Zap, text: "Hip Hop" },
-      { Icon: Heart, text: "Bollywood" },
-      { Icon: Star, text: "Folk Dance" },
+      { Icon: Mastery, text: "Yoga" },
+      { Icon: Zumba, text: "Zumba" },
     ],
   },
 ];
@@ -73,12 +79,23 @@ const CourseCard = ({ MainIcon, title, items }) => {
         {title}
       </h3>
       <ul className="text-left w-full space-y-3 mb-8 text-gray-600">
-        {items.map((item, index) => (
+        {items.map((item, index) => {
+          const isImage = typeof item.Icon === "string";
+
+          return (
           <li key={index} className="flex items-center gap-3">
-            <item.Icon className="h-5 w-5 text-yellow-500" strokeWidth={2.5} />
-            <span>{item.text}</span>
-          </li>
-        ))}
+              {isImage ? (
+                <img src={item.Icon} alt={item.text} className="h-5 w-5 text-yellow-500" />
+              ) : (
+                <item.Icon
+                  className="h-5 w-5 text-yellow-500"
+                  strokeWidth={2.5}
+                />
+              )}
+              <span>{item.text}</span>
+            </li>
+          );
+        })}
       </ul>
       <button
         onClick={handleClick}

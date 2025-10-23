@@ -81,10 +81,10 @@ function Footer() {
                 </a>
                 <span className="mx-1">|</span>
                 <a
-                  href="tel:+919595619414"
+                  href="tel:+919595618414"
                   className="hover:text-white transition-colors duration-300"
                 >
-                  9595619414
+                  9595618414
                 </a>
               </div>
             </div>
