@@ -67,7 +67,7 @@ function Navbar() {
             </a>
             
             {isCoursesOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-black/90 backdrop-blur-sm rounded-md shadow-lg py-2 transition-all duration-300 ease-in-out">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-black/80 backdrop-blur-sm rounded-md shadow-lg py-2 transition-all duration-300 ease-in-out">
                 {/* Music */}
                 <div onMouseEnter={() => setActiveSubMenu("music")} className="relative">
                   <a className="flex justify-between items-center w-full px-4 py-2 text-sm text-white hover:bg-white/10" href="#courses">
@@ -75,7 +75,7 @@ function Navbar() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </a>
                   {activeSubMenu === "music" && (
-                    <div className="absolute top-0 left-full w-56 bg-black/90 backdrop-blur-sm rounded-md shadow-lg py-2">
+                    <div className="absolute top-0 left-full w-56 bg-black/80 backdrop-blur-sm rounded-md shadow-lg py-2">
                       {courseData.music.map((item) => (
                         <a key={item} className="block px-4 py-2 text-sm text-white hover:bg-white/10" href="#courses">{item}</a>
                       ))}
@@ -89,7 +89,7 @@ function Navbar() {
                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </a>
                   {activeSubMenu === "acting" && (
-                    <div className="absolute top-0 left-full w-56 bg-black/90 backdrop-blur-sm rounded-md shadow-lg py-2">
+                    <div className="absolute top-0 left-full w-56 bg-black/80 backdrop-blur-sm rounded-md shadow-lg py-2">
                       {courseData.acting.map((item) => (
                          <a key={item} className="block px-4 py-2 text-sm text-white hover:bg-white/10" href="#courses">{item}</a>
                       ))}
@@ -103,8 +103,7 @@ function Navbar() {
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                   </a>
                    {activeSubMenu === "dance" && (
-                     // === FIX: The ml-1 class has been REMOVED here ===
-                    <div className="absolute top-0 left-full w-56 bg-black/90 backdrop-blur-sm rounded-md shadow-lg py-2">
+                    <div className="absolute top-0 left-full w-56 bg-black/80 backdrop-blur-sm rounded-md shadow-lg py-2">
                       {courseData.dance.map((item) => (
                          <a key={item} className="block px-4 py-2 text-sm text-white hover:bg-white/10" href="#courses">{item}</a>
                       ))}
