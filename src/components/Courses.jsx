@@ -244,10 +244,10 @@ const CourseCard = ({ MainIcon, title, items }) => {
 
 const SkillCard = ({ image, name, points }) => {
   return (
-    <div className="bg-white rounded-2xl pt-4 shadow-lg flex flex-col w-80 flex-shrink-0 group hover:shadow-xl transition-all duration-300">
+    <div className="bg-slate-900 rounded-2xl pt-4 shadow-lg flex flex-col w-80 flex-shrink-0 group hover:shadow-xl transition-all duration-300">
       
       {/* Image Area - Added padding-top to give image space */}
-      <div className="flex justify-center items-center rounded-2xl h-48 bg-white pb-4">
+      <div className="flex justify-center items-center h-48 bg-slate-900 pb-4">
         <img
           src={image}
           alt={name}
@@ -258,13 +258,13 @@ const SkillCard = ({ image, name, points }) => {
       </div>
       
       <div className="p-6 pt-0 flex flex-col flex-grow">
-        <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center">
+        <h3 className="text-2xl font-bold mb-4 text-gray-300 text-center">
           {name}
         </h3>
         {/* 4 Points */}
-        <ul className="text-left w-full space-y-3 text-gray-600">
+        <ul className="text-left w-full space-y-3 text-white">
           {points.map((point, index) => (
-            <li key={index} className="flex items-start gap-3">
+            <li key={index} className="flex items-start gap-3 text-gray-300">
               <ListCheck
                 className="h-5 w-5 text-yellow-500 flex-shrink-0 mt-1"
                 strokeWidth={2.5}
