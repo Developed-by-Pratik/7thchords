@@ -262,9 +262,9 @@ const SkillCard = ({ image, name, points }) => {
           {name}
         </h3>
         {/* 4 Points */}
-        <ul className="text-left w-full space-y-3 text-white">
+        <ul className="text-left w-full space-y-3">
           {points.map((point, index) => (
-            <li key={index} className="flex items-start gap-3 text-gray-300">
+            <li key={index} className="flex items-start gap-3 text-gray-300 font-bold">
               <ListCheck
                 className="h-5 w-5 text-yellow-500 flex-shrink-0 mt-1"
                 strokeWidth={2.5}
