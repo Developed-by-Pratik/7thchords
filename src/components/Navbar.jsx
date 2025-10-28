@@ -7,13 +7,25 @@ function Navbar() {
   const [isCoursesOpen, setIsCoursesOpen] = useState(false); // For desktop dropdown
   const [activeSubMenu, setActiveSubMenu] = useState(""); // To manage which nested menu is open
 
-  const phoneNumber = "919595618414";
-  const message = "Hi, I would like to enquire about courses and batches. \nName : \nCity : \nCourse : ";
+  const handleWhatsAppRedirect = () => {
+    const message = `
+🙋🏻‍♀️ 𝐇𝐞𝐥𝐥𝐨 𝟕𝐭𝐡 𝐂𝐇𝐎𝐑𝐃𝐒 𝐀𝐂𝐀𝐃𝐄𝐌𝐘..!!
 
-  const handleClick = () => {
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
+👩🏻‍💻ɪ ᴡᴏᴜʟᴅ ʟɪᴋᴇ ᴛᴏ ᴇɴǫᴜɪʀᴇ ᴀʙᴏᴜᴛ ᴄᴏᴜʀsᴇs ᴀɴᴅ ʙᴀᴛᴄʜᴇs..!! 🎸✨
+
+ʜᴇʀᴇ ᴀʀᴇ ᴍʏ ᴅᴇᴛᴀɪʟs :-
+- 📝 𝐍𝐚𝐦𝐞 :- 
+- 🎸 𝐂𝐨𝐮𝐫𝐬𝐞 :-
+- 🏫 𝐂𝐢𝐭𝐲 :-
+- 🧑🏻‍🏫 𝐌𝐨𝐝𝐞 ( ᴏғғʟɪɴᴇ / ᴏɴʟɪɴᴇ ) :-
+
+🤳🏻 ɪ ᴄᴀɴ'ᴛ ᴡᴀɪᴛ ᴛᴏ ᴄᴏɴɴᴇᴄᴛ ᴀɴᴅ ʟᴇᴀʀɴ ᴍᴏʀᴇ. ᴘʟᴇᴀsᴇ ɢᴇᴛ ɪɴ ᴛᴏᴜᴄʜ sᴏᴏɴ..!! 
+
+ᴛʜᴀɴᴋ ʏᴏᴜ..!!
+    `.trim();
+    window.open(`https://api.whatsapp.com/send/?phone=919595618414&text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
   };
 
   const courseData = {
@@ -143,7 +155,7 @@ function Navbar() {
               <Instagram />
             </a>
           </button>
-          <button onClick={handleClick} className="px-6 py-2 rounded-full text-white backdrop-blur-xl bg-white/10 border border-white/30 hover:bg-white/20 hover:scale-101 transition-all duration-500 ease-in-out">
+          <button onClick={handleWhatsAppRedirect} className="px-6 py-2 rounded-full text-white backdrop-blur-xl bg-white/10 border border-white/30 hover:bg-white/20 hover:scale-101 transition-all duration-500 ease-in-out">
             Enquire Now
           </button>
         </div>

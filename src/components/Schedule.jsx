@@ -3,7 +3,7 @@ import details from "../assets/details.jpeg";
 
 function Schedule() {
   return (
-    <section className="bg-gray-50 min-h-[90vh] p-8 sm:p-20">
+    <section className="bg-gray-50 p-8 sm:p-20">
       {/* Main container for the side-by-side layout */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 items-start">
         {/* Column 1: Levels of Learning */}

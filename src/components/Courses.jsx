@@ -198,12 +198,23 @@ const detailedSkillsData = [
 ];
 
 const CourseCard = ({ MainIcon, title, items }) => {
-  const handleClick = () => {
-    const phoneNumber = "919595618414";
-    const message = `Hello, I want to join the ${title} course!\nName : \nCity : `;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
+  const handleWhatsAppRedirect = () => {
+    const message = `
+🙋🏻‍♀️ 𝐇𝐞𝐥𝐥𝐨 𝟕𝐭𝐡 𝐂𝐇𝐎𝐑𝐃𝐒 𝐀𝐂𝐀𝐃𝐄𝐌𝐘..!!
+
+👩🏻‍💻ɪ ᴡᴀɴᴛ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ ${title} 𝐂𝐨𝐮𝐫𝐬𝐞..!! 🎸✨
+
+ʜᴇʀᴇ ᴀʀᴇ ᴍʏ ᴅᴇᴛᴀɪʟs :-
+- 📝 𝐍𝐚𝐦𝐞 :- 
+- 🎸 𝐂𝐨𝐮𝐫𝐬𝐞 :-
+- 🏫 𝐂𝐢𝐭𝐲 :-
+- 🧑🏻‍🏫 𝐌𝐨𝐝𝐞 ( ᴏғғʟɪɴᴇ / ᴏɴʟɪɴᴇ ) :-
+
+🤳🏻 ɪ ᴄᴀɴ'ᴛ ᴡᴀɪᴛ ᴛᴏ ᴄᴏɴɴᴇᴄᴛ ᴀɴᴅ ʟᴇᴀʀɴ ᴍᴏʀᴇ. ᴘʟᴇᴀsᴇ ɢᴇᴛ ɪɴ ᴛᴏᴜᴄʜ sᴏᴏɴ..!! 
+
+ᴛʜᴀɴᴋ ʏᴏᴜ..!!
+`.trim();
+    window.open(`https://api.whatsapp.com/send/?phone=919595618414&text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
@@ -233,7 +244,7 @@ const CourseCard = ({ MainIcon, title, items }) => {
         })}
       </ul>
       <button
-        onClick={handleClick}
+        onClick={handleWhatsAppRedirect}
         className="mt-auto bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg w-full hover:bg-yellow-500 transition-colors duration-300"
       >
         Enroll Now

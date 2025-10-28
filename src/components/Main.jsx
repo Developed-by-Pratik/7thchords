@@ -4,19 +4,27 @@ import { Guitar, Phone, GraduationCap, Music4, Star } from "lucide-react";
 
 function Main() {
 
-  const phoneNumber = "919595618414";
-  const message =
-    "Hello, I want to join the course !\n Name :\n City : \n Course : ";
-
-  const handleClick = () => {
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
+  const handleWhatsAppRedirect = () => {
+    const message = `
+  🙋🏻‍♀️ 𝐇𝐞𝐥𝐥𝐨 𝟕𝐭𝐡 𝐂𝐇𝐎𝐑𝐃𝐒 𝐀𝐂𝐀𝐃𝐄𝐌𝐘..!!
+  
+  👩🏻‍💻ɪ ᴋɪɴᴅʟʏ ʀᴇǫᴜᴇsᴛ ᴛᴏ ʙᴏᴏᴋ ᴍʏ sᴘᴏᴛ ɪɴ...
+  
+  - 🎸 𝐂𝐨𝐮𝐫𝐬𝐞 :-
+  - 📝 𝐍𝐚𝐦𝐞 :- 
+  - 🏫 𝐂𝐢𝐭𝐲 :-
+  - 🧑🏻‍🏫 𝐌𝐨𝐝𝐞 ( ᴏғғʟɪɴᴇ / ᴏɴʟɪɴᴇ ) :-
+  
+  🤳🏻 ᴘʟᴇᴀsᴇ ᴄᴏɴғɪʀᴍ ᴛʜᴇ ʀᴇɢɪsᴛʀᴀᴛɪᴏɴ ᴅᴇᴛᴀɪʟs ᴀᴛ ʏᴏᴜʀ ᴇᴀʀʟɪᴇsᴛ ᴄᴏɴᴠᴇɴɪᴇɴᴄᴇ..!! 
+  
+  ᴛʜᴀɴᴋ ʏᴏᴜ..!!
+      `.trim();
+    window.open(`https://api.whatsapp.com/send/?phone=919595618414&text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
     <section
-      className="relative w-full min-h-[90vh] flex items-center justify-center md:justify-start px-6 md:px-20 py-12 text-white overflow-hidden bg-cover bg-center"
+      className="relative w-full min-h-full flex items-center justify-center md:justify-start px-6 md:px-20 py-12 text-white overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: `url(${BgImage})` }}
     >
       {/* Overlay */}
@@ -52,7 +60,7 @@ function Main() {
         {/* Buttons */}
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
           <button
-            onClick={handleClick}
+            onClick={handleWhatsAppRedirect}
             className="flex items-center gap-2 bg-gradient-to-r from-[#f8b400] to-[#e4a300] hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/30 text-black font-bold px-6 py-3 rounded-full transition-all duration-300"
           >
             <Music4 size={20} />

@@ -55,7 +55,7 @@ const InfoCard = ({ icon, title, description, iconColor }) => {
 
 function Learning() {
   return (
-    <div className="bg-slate-900 min-h-screen w-full text-center py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="bg-slate-900 w-full text-center py-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       
       {/* This container controls the overall width of the content area */}
       <div className="w-full max-w-5xl lg:max-w-7xl mx-auto">

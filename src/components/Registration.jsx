@@ -75,12 +75,11 @@ const Registration = () => {
     if (Object.keys(validationErrors).length > 0) {
       return;
     }
-
-    const phoneNumber = "919595618414";
+    
     const message = `
-𝐇𝐞𝐥𝐥𝐨 𝟕𝐭𝐡 𝐂𝐇𝐎𝐑𝐃𝐒 𝐀𝐂𝐀𝐃𝐄𝐌𝐘...!!
+🙋🏻‍♀️ 𝐇𝐞𝐥𝐥𝐨 𝟕𝐭𝐡 𝐂𝐇𝐎𝐑𝐃𝐒 𝐀𝐂𝐀𝐃𝐄𝐌𝐘..!!
 
-ɪ'ᴍ ʀᴇᴀᴅʏ ᴛᴏ sᴛᴀʀᴛ ᴍʏ ᴍᴜsɪᴄᴀʟ ᴊᴏᴜʀɴᴇʏ ᴀɴᴅ ᴡᴏᴜʟᴅ ʟᴏᴠᴇ ᴛᴏ ʀᴇɢɪsᴛᴇʀ ғᴏʀ ᴀ ᴄᴏᴜʀsᴇ..!!
+👩🏻‍💻ɪ'ᴍ ʀᴇᴀᴅʏ ᴛᴏ sᴛᴀʀᴛ ᴍʏ ᴍᴜsɪᴄᴀʟ ᴊᴏᴜʀɴᴇʏ ᴀɴᴅ ᴡᴏᴜʟᴅ ʟᴏᴠᴇ ᴛᴏ ʀᴇɢɪsᴛᴇʀ ғᴏʀ ᴀ ᴄᴏᴜʀsᴇ..!! 🎸✨
 
 ʜᴇʀᴇ ᴀʀᴇ ᴍʏ ᴅᴇᴛᴀɪʟs :-
 - 𝐍𝐚𝐦𝐞  :- ${formData.fullName}
@@ -90,15 +89,12 @@ const Registration = () => {
 - 𝐂𝐨𝐮𝐫𝐬𝐞  :- ${formData.course}
 - 𝐌𝐨𝐝𝐞   :- ${formData.mode}
 
-ɪ ᴄᴀɴ'ᴛ ᴡᴀɪᴛ ᴛᴏ ᴄᴏɴɴᴇᴄᴛ ᴀɴᴅ ʟᴇᴀʀɴ ᴍᴏʀᴇ. ᴘʟᴇᴀsᴇ ɢᴇᴛ ɪɴ ᴛᴏᴜᴄʜ sᴏᴏɴ...!!
+🤳🏻 ɪ ᴄᴀɴ'ᴛ ᴡᴀɪᴛ ᴛᴏ ᴄᴏɴɴᴇᴄᴛ ᴀɴᴅ ʟᴇᴀʀɴ ᴍᴏʀᴇ. ᴘʟᴇᴀsᴇ ɢᴇᴛ ɪɴ ᴛᴏᴜᴄʜ sᴏᴏɴ..!! 
 
 ᴛʜᴀɴᴋ ʏᴏᴜ..!!
     `.trim();
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, "_blank");
+    window.open(`https://api.whatsapp.com/send/?phone=919595618414&text=${encodeURIComponent(message)}`, "_blank");
 
     setIsSubmitted(true);
     setFormData({
@@ -148,7 +144,7 @@ const Registration = () => {
 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐲𝐨𝐮 𝐭𝐨 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐅𝐞𝐞𝐝𝐛𝐚𝐜𝐤 𝐛𝐲 𝐭𝐚𝐩𝐩𝐢𝐧𝐠 𝐭𝐡𝐢𝐬 𝐔𝐑𝐋 https://g.page/r/CZGVC78LPsb0EBE/review, 𝐈𝐭 𝐭𝐚𝐤𝐞𝐬 𝐭𝐰𝐨 𝐦𝐢𝐧𝐮𝐭𝐞𝐬 𝐨𝐟 𝐲𝐨𝐮𝐫 𝐭𝐢𝐦𝐞 𝐚𝐧𝐝 𝐡𝐞𝐥𝐩𝐬 𝐮𝐬 𝐭𝐨 𝐄𝐧𝐜𝐨𝐮𝐫𝐚𝐠𝐞 𝐚𝐧𝐝 𝐢𝐦𝐩𝐫𝐨𝐯𝐞 𝐨𝐮𝐫 𝐬𝐞𝐫𝐯𝐢𝐜𝐞𝐬. 
 
 ________________________________________
-              "𝐌𝐮𝐬𝐢𝐜 𝐤𝐞𝐞𝐩𝐬 𝐬𝐨𝐮𝐥 𝐜𝐚𝐥𝐦."
+            "𝐌𝐮𝐬𝐢𝐜 𝐤𝐞𝐞𝐩𝐬 𝐬𝐨𝐮𝐥 𝐜𝐚𝐥𝐦."
         "𝐊𝐞𝐞𝐩 𝐏𝐫𝐚𝐜𝐭𝐢𝐜𝐢𝐧𝐠 𝐊𝐞𝐞𝐩 𝐑𝐨𝐜𝐤𝐢𝐧𝐠"
 ________________________________________
 
@@ -194,7 +190,7 @@ ________________________________________
               *- 📱 9595618414*
 
 📍𝐀𝐝𝐝𝐫𝐞𝐬𝐬 𝐅𝐨𝐫 𝐎𝐟𝐟𝐥𝐢𝐧𝐞 𝐂𝐥𝐚𝐬𝐬𝐞𝐬 :-   
-                    🏫 ℙ𝕌ℕ𝔼 ℂ𝕀𝕋𝕐 & 
+           🏫 ℙ𝕌ℕ𝔼 ℂ𝕀𝕋𝕐 & 
        ℂ𝕙𝕙. 𝕊𝔸𝕄𝔹ℍ𝔸𝕁𝕀ℕ𝔸𝔾𝔸ℝ ℂ𝕀𝕋𝕐
 
 
@@ -207,7 +203,6 @@ Hello, I want to know more about 7th Chords Academy !
 
   window.open(`https://api.whatsapp.com/send/?phone=919595618414&text=${encodeURIComponent(message)}`, "_blank");
 };
-
 
   return (
     <section id="contact" className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">

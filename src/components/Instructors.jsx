@@ -45,7 +45,7 @@ function Instructors() {
   ];
 
   return (
-    <section id="instructors" className="bg-gray-50 py-16 sm:py-20">
+    <section id="instructors" className="bg-gray-50">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
