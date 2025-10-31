@@ -365,9 +365,18 @@ Hello, I want to know more about 7th Chords Academy !
                   <option value="Guitar">Guitar</option>
                   <option value="Keyboard">Keyboard</option>
                   <option value="Drumset">Drumset</option>
+                  <option value="Flute">Flute</option>
                   <option value="Singing">Singing</option>
+                  <option value="Ukulele">Ukulele</option>
+                  <option value="Mandolin">Mandolin</option>
+                  <option value="Melodica">Melodica</option>
+                  <option value="Tabla / Dholak / Dholki">Tabla / Dholak / Dholki</option>
                   <option value="Acting">Acting</option>
+                  <option value="Cinematography">Cinematography</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Yoga">Yoga</option>
                   <option value="Dance">Dance</option>
+                  <option value="Zumba">Zumba</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
